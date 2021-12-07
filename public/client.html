@@ -1,0 +1,67 @@
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<div id='app'>
+   <!-- <h3>Create Database <button v-on:click="GetRand">Create Database</button></h3>  -->
+   <h3>Create Database <button v-on:click="createTable">Create Database</button></h3> 
+   <h3>Query Database
+   Movie Name: <input v-model="name" placeholder="eg. Toy Story">
+   Year: <input v-model="year" placeholder="eg. 2004">
+   Rating: <input v-model="rating" placeholder="eg. 9.8">
+   <button v-on:click="queryTable">Query Database</h3>
+   <!-- <h3>Destroy Database  <button v-on:click="GetRand">Destroy Database</button></h3> -->
+   <h3>Destroy Database  <button v-on:click="deleteTable">Destroy Database</button></h3>
+   <!-- {{ test }} -->
+   
+  <table>
+     <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Rating</th>
+     </tr>
+     <tr v-for="result in movieData" >
+        <td>{{result.title.S}}</td>
+        <td>{{result.yearOfRelease.N}}</td>
+        <td>{{result.rating.N}}</td>
+     </tr>
+  </table>
+
+      
+   </span>
+</div>
+<script>
+   var app = new Vue({
+      el: '#app',
+      data: {
+         
+        test: "test",
+        year: "",
+        name: "",
+        rating: "",
+        movieData: [],
+        
+        
+      },
+      methods: {
+         createTable: createTab,
+         deleteTable: deleteTab,
+         queryTable: queryTab
+      }
+   })          
+   
+   async function createTab(){
+      let response = await fetch('http://localhost:3000/create', {method: "POST"})
+   }
+
+   async function deleteTab(){
+      let response = await fetch('http://localhost:3000/delete', {method: "DELETE"})
+   }
+
+   async function queryTab(){
+      console.log(this.name);
+      let url = `http://localhost:3000/query?movie=${this.name}&year=${this.year}&rating=${this.rating}`
+      let response = await fetch(url)
+      let res = await response.json()
+      this.movieData=res.results
+      console.log(this.movieData)
+   }
+</script>
