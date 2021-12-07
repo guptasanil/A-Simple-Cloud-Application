@@ -15,8 +15,8 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`
 AWS.config.update({
   region: "eu-west-1",
   endpoint: "https://dynamodb.eu-west-1.amazonaws.com",
-  accessKeyId: "AKIA3Z4W3TKP6KA6QOUL",
-  secretAccessKey: "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",
+  accessKeyId: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.ACCESS_KEY_ID,
 });
 
 // src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"
