@@ -149,11 +149,11 @@ app.get("/query", async function (req, res) {
       console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
     } else {
       console.log("Query succeeded.");
-      data.Items.forEach(function (item) {
-        console.log(item.title);
-        console.log(item.yearOfRelease);
-        console.log(item.rating);
-      });
+      // data.Items.forEach(function (item) {
+      //   console.log(item.title);
+      //   console.log(item.yearOfRelease);
+      //   console.log(item.rating);
+      // });
     }
     console.log("Table has been queried");
     res.status(200);
@@ -176,8 +176,8 @@ app.delete("/delete", async function (req, res) {
       );
     } else {
       console.log(
-        "Deleted table. Table description JSON:",
-        JSON.stringify(data, null, 2)
+        "Deleted table. Table description JSON:"
+        // JSON.stringify(data, null, 2)
       );
       res.status(200);
       res.json({});
