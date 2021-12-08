@@ -18,7 +18,7 @@ AWS.config.update({
   region: "eu-west-1",
   endpoint: "https://dynamodb.eu-west-1.amazonaws.com",
   accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY,
 });
 
 // src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"
