@@ -176,7 +176,7 @@ app.delete("/delete", async function (req, res) {
       );
     } else {
       console.log(
-        "Deleted table. Table description JSON:"
+        "Deleted table"
         // JSON.stringify(data, null, 2)
       );
       res.status(200);
