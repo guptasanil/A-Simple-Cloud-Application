@@ -72,7 +72,7 @@ app.post("/create", async function (req, res) {
           );
           console.log(err);
         } else {
-          console.log("Table created", JSON.stringify(data, null, 2));
+          // console.log("Table created", JSON.stringify(data, null, 2));
 
           let inProgress = true;
 
@@ -101,6 +101,7 @@ app.post("/create", async function (req, res) {
             if (movie.rating == null) {
               movie.rating = 0;
             }
+            console.log("Movies have been imported into DynamoDB");
             docClient.put(putParams, function (err, data) {
               if (err) {
                 // console.error(
