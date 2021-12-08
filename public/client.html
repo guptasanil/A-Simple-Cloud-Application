@@ -51,10 +51,8 @@
    
    async function createTab(){
       let url = this.baseurl+'/create'
-      console.log('creating table')
       let response = await fetch(url, {method: "POST"})
-      let json = await response.json()
-      console.log(json);
+      console.log(response);
    }
 
    async function deleteTab(){
@@ -70,5 +68,6 @@
       let res = await response.json()
       this.movieData=res.results
       console.log(this.movieData)
+      console.log(response)
    }
 </script>

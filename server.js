@@ -115,6 +115,8 @@ app.post("/create", async function (req, res) {
               }
             });
           });
+          res.status(200);
+          res.json({});
         }
       });
     }
@@ -152,6 +154,7 @@ app.get("/query", async function (req, res) {
         console.log(item.rating);
       });
     }
+    res.status(200);
     res.json({
       results: data.Items,
     });
@@ -174,6 +177,8 @@ app.delete("/delete", async function (req, res) {
         "Deleted table. Table description JSON:",
         JSON.stringify(data, null, 2)
       );
+      res.status(200);
+      res.json({});
     }
   });
 });
