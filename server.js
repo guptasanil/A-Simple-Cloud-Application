@@ -35,13 +35,11 @@ var getParams = {
 };
 
 app.post("/create", async function (req, res) {
-  console.log("post function");
   let allMovies = [];
   s3.getObject(getParams, async function (err, data) {
     if (err) {
       console.log(err);
     } else {
-      console.log("Test");
       allMovies = await JSON.parse(data.Body);
       var docClient = new AWS.DynamoDB.DocumentClient();
 
