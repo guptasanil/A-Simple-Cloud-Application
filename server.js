@@ -2,7 +2,6 @@ const express = require("express");
 var cors = require("cors");
 require("dotenv").config();
 const AWS = require("aws-sdk");
-const s3 = new AWS.S3();
 const app = express();
 
 const port = 3000;
@@ -13,6 +12,11 @@ app.use(cors());
 // app.use(express.static(publicPath));
 // // app.get('/createtable', createTable)
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+var s3 = new AWS.S3({
+  accessKeyId: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+});
 
 AWS.config.update({
   region: "eu-west-1",
