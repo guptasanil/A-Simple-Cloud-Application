@@ -101,7 +101,6 @@ app.post("/create", async function (req, res) {
             if (movie.rating == null) {
               movie.rating = 0;
             }
-            console.log("Movies have been imported into DynamoDB");
             docClient.put(putParams, function (err, data) {
               if (err) {
                 // console.error(
@@ -116,6 +115,7 @@ app.post("/create", async function (req, res) {
               }
             });
           });
+          console.log("Movies have been imported into DynamoDB");
           res.status(200);
           res.json({});
         }
@@ -155,6 +155,7 @@ app.get("/query", async function (req, res) {
         console.log(item.rating);
       });
     }
+    console.log("Table has been queried");
     res.status(200);
     res.json({
       results: data.Items,
