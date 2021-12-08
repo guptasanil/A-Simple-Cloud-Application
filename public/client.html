@@ -38,6 +38,7 @@
         name: "",
         rating: "",
         movieData: [],
+        baseurl: "http://3.250.141.219:3000",
         
         
       },
@@ -49,16 +50,22 @@
    })          
    
    async function createTab(){
-      let response = await fetch('http://3.82.195.246:3000/create', {method: "POST"})
+      let url = this.baseurl+'/create'
+      console.log('creating table')
+      let response = await fetch(url, {method: "POST"})
+      let json = await response.json()
+      console.log(json);
    }
 
    async function deleteTab(){
-      let response = await fetch('http://3.82.195.246:3000/delete', {method: "DELETE"})
+      let url = this.baseurl+'/delete'
+      let response = await fetch(url, {method: "DELETE"})
+      console.log(response);
    }
 
    async function queryTab(){
       console.log(this.name);
-      let url = `http://3.82.195.246:3000/query?movie=${this.name}&year=${this.year}&rating=${this.rating}`
+      let url = this.baseurl+`/query?movie=${this.name}&year=${this.year}&rating=${this.rating}`
       let response = await fetch(url)
       let res = await response.json()
       this.movieData=res.results
