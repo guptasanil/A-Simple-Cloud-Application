@@ -49,16 +49,16 @@
    })          
    
    async function createTab(){
-      let response = await fetch('http://localhost:3000/create', {method: "POST"})
+      let response = await fetch('http://3.82.195.246:3000/create', {method: "POST"})
    }
 
    async function deleteTab(){
-      let response = await fetch('http://localhost:3000/delete', {method: "DELETE"})
+      let response = await fetch('http://3.82.195.246:3000/delete', {method: "DELETE"})
    }
 
    async function queryTab(){
       console.log(this.name);
-      let url = `http://localhost:3000/query?movie=${this.name}&year=${this.year}&rating=${this.rating}`
+      let url = `http://3.82.195.246:3000/query?movie=${this.name}&year=${this.year}&rating=${this.rating}`
       let response = await fetch(url)
       let res = await response.json()
       this.movieData=res.results
